@@ -20,11 +20,11 @@ class Config:
 
     #search parameter "data"
     @property
-    def image_data(self):        
-        if self.bookmarks == "":
-            return '''{"options":{"isPrefetch":false,"query":"''' + self.search_keyword + '''","scope":"pins","no_fetch_context_on_resource":false},"context":{}}'''
-        else:
-            return '''{"options":{"page_size":25,"query":"''' + self.search_keyword + '''","scope":"pins","bookmarks":["''' + self.bookmark + '''"],"field_set_key":"unauth_react","no_fetch_context_on_resource":false},"context":{}}'''.strip()
+    def image_data(self):
+        # if self.bookmarks == "":
+        #     return '''{"options":{"isPrefetch":true,"query":"''' + self.search_keyword + '''","scope":"pins","no_fetch_context_on_resource":false},"context":{}}'''
+        # else:
+            return '''{"options":{"page_size":250,"query":"''' + self.search_keyword + '''","scope":"pins","bookmarks":["''' + self.bookmark + '''"],"field_set_key":"unauth_react","no_fetch_context_on_resource":false},"context":{}}'''.strip()
 
     @property
     def search_keyword(self):
