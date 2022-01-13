@@ -2,11 +2,12 @@ import urllib
 
 class Config:
     IMAGE_SEARCH_URL = "https://tr.pinterest.com/resource/BaseSearchResource/get/?"
-    def __init__(self, search_keywords="", file_lengths=100, image_quality="orig", bookmarks=""):
+    def __init__(self, search_keywords="", file_lengths=100, image_quality="orig", bookmarks="", scroll=0):
         self.search_keywords = search_keywords
         self.file_lengths = file_lengths
         self.image_quality = image_quality
         self.bookmarks = bookmarks
+        self.scroll = str(scroll)
 
     #image search url
     @property
@@ -24,7 +25,7 @@ class Config:
         # if self.bookmarks == "":
         #     return '''{"options":{"isPrefetch":true,"query":"''' + self.search_keyword + '''","scope":"pins","no_fetch_context_on_resource":false},"context":{}}'''
         # else:
-            return '''{"options":{"page_size":250,"query":"''' + self.search_keyword + '''","scope":"pins","bookmarks":["''' + self.bookmark + '''"],"field_set_key":"unauth_react","no_fetch_context_on_resource":false},"context":{}}'''.strip()
+            return '''{"options":{"page_size":250, "scroll":''' + self.scroll + ''', "query":"''' + self.search_keyword + '''","scope":"pins","bookmarks":["''' + self.bookmark + '''"],"field_set_key":"unauth_react","no_fetch_context_on_resource":false},"context":{}}'''.strip()
 
     @property
     def search_keyword(self):
