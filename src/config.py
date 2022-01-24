@@ -23,7 +23,7 @@ class Config:
     @property
     def image_data(self):
         # if self.bookmarks == "":
-        #     return '''{"options":{"isPrefetch":true,"query":"''' + self.search_keyword + '''","scope":"pins","no_fetch_context_on_resource":false},"context":{}}'''
+        #     return '''{"options":{"page_size":250, "isPrefetch":true, "scroll":''' + self.scroll + ''', "query":"''' + self.search_keyword + '''","scope":"pins","no_fetch_context_on_resource":false},"context":{}}'''
         # else:
             return '''{"options":{"page_size":250, "scroll":''' + self.scroll + ''', "query":"''' + self.search_keyword + '''","scope":"pins","bookmarks":["''' + self.bookmark + '''"],"field_set_key":"unauth_react","no_fetch_context_on_resource":false},"context":{}}'''.strip()
 

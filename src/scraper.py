@@ -33,6 +33,8 @@ class Scraper:
     # Download images
     def download_images(self):
         folder = "photos"
+        folder2 = "photos2"
+
         # prev get links
         results = self.get_urls()
         try:
@@ -43,19 +45,20 @@ class Scraper:
         
         number = 0
         listdir = os.listdir(folder)
+        listdir2 = os.listdir(folder2)
+
         if results != None:
             for i in results:
                 file_name = i.split("/")[-1]
-                if file_name not in listdir:
+                if file_name not in listdir and file_name not in listdir2:
                     try:
                         number += 1
-                        download_folder = os.path.join(folder, file_name)
+                        download_folder = os.path.join(folder2, file_name)
                         print("Download ::: ", i)
-                        urllib.request.urlretrieve(i,  download_folder)
+                        urllib.request.urlretrieve(i, download_folder)
                     except Exception as e:
                         print("Error:", e)
 
-        print("number:", number)
         return number
 
     # get_urls return array

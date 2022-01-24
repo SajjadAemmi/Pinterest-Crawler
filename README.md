@@ -10,7 +10,12 @@ pip install requests
 ```
 
 ## How to Run
-
+Set your favorite keywords in main.py and run following command for collecte some images:
 ```
 python main.py
+```
+
+Run following command for infinite execution:
+```
+python loop.py
 ```
