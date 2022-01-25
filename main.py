@@ -3,42 +3,15 @@ from itertools import combinations
 from src import PinterestScraper, PinterestConfig
 
 
-keywords = [ 
-    "restaurant",
-    "store",
-    "penthouse",
-    "bedroom",
-    "wall", 
-    "house",
-    "alcove",
-    "carpet",
-    "Parquet",   
-    "flooring",
-    "tile", 
-    "decorating", 
-    "decor",
-    "living",
-    "furniture",
-    "bathroom",
-    "coffeeshop",
-    "kitchen",
-    "backsplash",
-    "Wooden cottage",   
-    "office",
-    "home", 
-    "indoor",
-    "interior",
-    "vintage",
-    "design", 
-    "texture",
-    "Sofa", 
-    "Curtain", 
-]
+file = open("keywords.txt", "r")
+keywords = file.read().split('\n')
+keywords = [keyword.strip() for keyword in keywords]
 
+print("start crawling...")
 random.shuffle(keywords)
 counter = 0
-numner_of_words = 4
-for item in combinations(keywords, numner_of_words):
+number_of_words = 4
+for item in combinations(keywords, number_of_words):
     if counter == 4:
         break
 
@@ -46,13 +19,13 @@ for item in combinations(keywords, numner_of_words):
     print(keyword)
 
     while True:
-        configs = PinterestConfig(search_keywords=keyword, # Search word
-                                file_lengths=5000, # total number of images to download (default = "100")
-                                image_quality="originals", # image quality (default = "orig")
-                                bookmarks="", # next page data (default= "")
+        configs = PinterestConfig(search_keywords=keyword,  # Search word
+                                file_lengths=5000,  # total number of images to download (default = "100")
+                                image_quality="originals",  # image quality (default = "orig")
+                                bookmarks="",  # next page data (default= "")
                                 scroll=10000)
 
-        number = PinterestScraper(configs).download_images()     # download images directly
+        number = PinterestScraper(configs).download_images()  # download images directly
         print("number:", number)
         if number == 0:
             counter += 1

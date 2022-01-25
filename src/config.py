@@ -1,5 +1,6 @@
 import urllib
 
+
 class Config:
     IMAGE_SEARCH_URL = "https://tr.pinterest.com/resource/BaseSearchResource/get/?"
     def __init__(self, search_keywords="", file_lengths=100, image_quality="orig", bookmarks="", scroll=0):

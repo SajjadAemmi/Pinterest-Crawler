@@ -7,7 +7,7 @@ import urllib
 URL = None
 
 
-def myprint(d):
+def search(d):
     global URL
     if isinstance(d, dict):
         for k, v in d.items():
@@ -15,10 +15,10 @@ def myprint(d):
                 if k == "orig":
                     URL = v["url"]
                 else:    
-                    myprint(v)
+                    search(v)
             elif isinstance(v, list):
                 for item in v:
-                    myprint(item)
+                    search(item)
         
 
 class Scraper:
@@ -81,7 +81,7 @@ class Scraper:
                 self.image_urls.append(i["objects"][0]["cover_images"][0]["originals"]["url"])
             except:
                 URL = None
-                myprint(i)
+                search(i)
                 if URL != None:
                     self.image_urls.append(URL)
 
