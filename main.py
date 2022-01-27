@@ -10,7 +10,7 @@ keywords = [keyword.strip() for keyword in keywords]
 print("start crawling...")
 random.shuffle(keywords)
 counter = 0
-number_of_words = 4
+number_of_words = 2
 for item in combinations(keywords, number_of_words):
     if counter == 4:
         break
