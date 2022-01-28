@@ -31,29 +31,25 @@ class Scraper:
         self.config = config
 
     # Download images
-    def download_images(self):
-        folder = "photos"
-
+    def download_images(self, output_path):
         # prev get links
         results = self.get_urls()
         try:
-            os.makedirs(folder)
-            print("Directory ", folder, " Created ")
+            os.makedirs(output_path)
+            print("Directory ", output_path, " Created ")
         except FileExistsError:
             pass
         
         number = 0
-        listdir = os.listdir(folder)
-
+        listdir = os.listdir(output_path)
         if results != None:
             for i in results:
                 file_name = i.split("/")[-1]
                 if file_name not in listdir:
                     try:
                         number += 1
-                        download_folder = os.path.join(folder, file_name)
                         print("Download ::: ", i)
-                        urllib.request.urlretrieve(i, download_folder)
+                        urllib.request.urlretrieve(i, os.path.join(output_path, file_name))
                     except Exception as e:
                         print("Error:", e)
 
