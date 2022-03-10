@@ -9,7 +9,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--keywords", default="keywords.txt", help="path to input image")
     parser.add_argument('--output', help='output dir', default='photos', type=str)
-    parser.add_argument("-nw", '--number-of-words', help='number of keywords for search', default=4, type=int)
+    parser.add_argument("-nw", '--number-of-words', help='number of keywords for search', default=2, type=int)
     args = parser.parse_args()
 
     file = open(args.keywords, "r")
@@ -41,4 +41,4 @@ if __name__ == "__main__":
             else:
                 counter = 0
 
-    print("All images in dir:", len(os.listdir("photos")))
+    print("All images in dir:", len(os.listdir(args.output)))

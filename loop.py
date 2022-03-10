@@ -3,7 +3,7 @@ import subprocess
 
 
 while True:
-    command = "python3 main.py"
+    command = "python main.py"
     process = subprocess.Popen(command, shell=True)
     process.wait()
     print("Sleeping for 30 seconds ...")
