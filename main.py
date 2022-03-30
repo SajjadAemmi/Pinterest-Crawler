@@ -19,6 +19,7 @@ if __name__ == "__main__":
     print("start crawling...")
     random.shuffle(keywords)
     counter = 0
+    if len(keywords)==1:args.number_of_words=1
     for item in combinations(keywords, args.number_of_words):
         if counter == 4:
             break
