@@ -1,3 +1,4 @@
 elephant
 animal
+حیوان
 فیل
