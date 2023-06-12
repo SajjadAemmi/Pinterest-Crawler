@@ -1,0 +1,6 @@
+# Include the README
+include *.md
+include requirements.txt
+
+# Include setup.py
+include setup.py

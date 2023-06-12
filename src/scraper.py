@@ -1,37 +1,19 @@
-import requests
-import json
 import os
+import json
 import urllib
+import requests
 
-
-URL = None
-
-
-def search(d):
-    global URL
-    if isinstance(d, dict):
-        for k, v in d.items():
-            if isinstance(v, dict):
-                if k == "orig":
-                    URL = v["url"]
-                else:    
-                    search(v)
-            elif isinstance(v, list):
-                for item in v:
-                    search(item)
-        
 
 class Scraper:
-    def __init__(self, config, image_urls=[]):
+    def __init__(self, config, image_urls=None):
         self.config = config
-        self.image_urls = image_urls
+        self.image_urls = image_urls if image_urls else []
 
-    # Set config for bookmarks (next page)
     def setConfig(self, config):
+        # Set config for bookmarks (next page)
         self.config = config
 
-    # Download images
-    def download_images(self, output_path):
+    def download_images(self, output_path) -> int:
         # prev get links
         results = self.get_urls()
         try:
@@ -55,16 +37,12 @@ class Scraper:
 
         return number
 
-    # get_urls return array
-    def get_urls(self):
-        global URL
-
+    def get_urls(self) -> list:
         SOURCE_URL = self.config.source_url,
         DATA = self.config.image_data,
         URL_CONSTANT = self.config.search_url
 
-        r = requests.get(URL_CONSTANT, params={
-                         "source_url": SOURCE_URL, "data": DATA})
+        r = requests.get(URL_CONSTANT, params={"source_url": SOURCE_URL, "data": DATA})
         jsonData = json.loads(r.content)
         resource_response = jsonData["resource_response"]
         data = resource_response["data"]
@@ -74,10 +52,10 @@ class Scraper:
             try:
                 self.image_urls.append(i["objects"][0]["cover_images"][0]["originals"]["url"])
             except:
-                URL = None
-                search(i)
-                if URL != None:
-                    self.image_urls.append(URL)
+                self.URL = None
+                self.search(i)
+                if self.URL != None:
+                    self.image_urls.append(self.URL)
 
         if len(self.image_urls) < int(self.config.file_length):
             try:
@@ -85,3 +63,15 @@ class Scraper:
                 return self.image_urls[0:self.config.file_length]
             except:
                 pass
+
+    def search(self, d):
+        if isinstance(d, dict):
+            for k, v in d.items():
+                if isinstance(v, dict):
+                    if k == "orig":
+                        self.URL = v["url"]
+                    else:
+                        self.search(v)
+                elif isinstance(v, list):
+                    for item in v:
+                        self.search(item)

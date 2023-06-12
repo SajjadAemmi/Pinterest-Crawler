@@ -8,18 +8,19 @@ from src import PinterestScraper, PinterestConfig
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--keywords", default="keywords.txt", help="path to input image")
-    parser.add_argument('--output', help='output dir', default='photos', type=str)
+    parser.add_argument('--output', help='output dir', default='io/output', type=str)
     parser.add_argument("-nw", '--number-of-words', help='number of keywords for search', default=2, type=int)
     args = parser.parse_args()
 
-    file = open(args.keywords, "r")
-    keywords = file.read().split('\n')
-    keywords = [keyword.strip() for keyword in keywords]
+    os.makedirs(args.output, exist_ok=True)
+    file = open(args.keywords, "r", encoding="utf-8")
+    keywords = [keyword.strip() for keyword in file.read().split('\n')]
 
     print("start crawling...")
     random.shuffle(keywords)
     counter = 0
-    if len(keywords)==1:args.number_of_words=1
+    if len(keywords) == 1:
+        args.number_of_words = 1
     for item in combinations(keywords, args.number_of_words):
         if counter == 4:
             break
@@ -29,12 +30,16 @@ if __name__ == "__main__":
 
         while True:
             configs = PinterestConfig(search_keywords=keyword,  # Search word
-                                    file_lengths=5000,  # total number of images to download (default = "100")
-                                    image_quality="originals",  # image quality (default = "orig")
-                                    bookmarks="",  # next page data (default= "")
-                                    scroll=10000)
+                                      # total number of images to download (default = "100")
+                                      file_lengths=5000,
+                                      # image quality (default = "orig")
+                                      image_quality="originals",
+                                      # next page data (default= "")
+                                      bookmarks="",
+                                      scroll=10000)
 
-            number = PinterestScraper(configs).download_images(args.output)  # download images directly
+            # download images directly
+            number = PinterestScraper(configs).download_images(args.output)  
             print("number:", number)
             if number == 0:
                 counter += 1
