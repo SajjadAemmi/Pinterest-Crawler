@@ -22,11 +22,11 @@ pre_install()
 
 
 setup(
-    name='pynterest',
-    version='0.1.0',
+    name='pinterest-crawler',
+    version='0.1.1',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    packages=["pynterest"],
+    packages=["pinterest-crawler"],
     setup_requires=[],
     url='https://github.com/SajjadAemmi/Pinterest-Crawler',
     license='',
@@ -36,6 +36,6 @@ setup(
     include_package_data=True,
     install_requires=post_install(),
     entry_points={
-        "console_scripts": ["pynterest=pynterest.plantsai:main"],
+        "console_scripts": ["pinterest-crawler=pinterest_crawler.pinterest_crawler:main"],
     },
 )
