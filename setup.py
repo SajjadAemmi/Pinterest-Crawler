@@ -26,7 +26,7 @@ setup(
     version='0.1.1',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    packages=["pinterest-crawler"],
+    packages=["pinterest_crawler"],
     setup_requires=[],
     url='https://github.com/SajjadAemmi/Pinterest-Crawler',
     license='',
