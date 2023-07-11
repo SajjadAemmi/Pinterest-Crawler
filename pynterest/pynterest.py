@@ -8,7 +8,7 @@ from src import PinterestScraper, PinterestConfig
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--keywords", help="keywords as path of file or list of words", nargs='+', default=[])
-    parser.add_argument('--output', help='output dir', default='io/output', type=str)
+    parser.add_argument('--output', help='output dir', default='./io/output', type=str)
     parser.add_argument("-nw", '--number-of-words', help='number of keywords for search', default=2, type=int)
     args = parser.parse_args()
 

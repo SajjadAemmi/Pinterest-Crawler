@@ -23,14 +23,11 @@ pre_install()
 
 setup(
     name='pynterest',
-    version='0.1.14',
+    version='0.1.0',
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=["pynterest"],
-    setup_requires=[
-        'pyside6',
-        'numpy'
-    ],
+    setup_requires=[],
     url='https://github.com/SajjadAemmi/Pinterest-Crawler',
     license='',
     author='Sajjad Aemmi',
