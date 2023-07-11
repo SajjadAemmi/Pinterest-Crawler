@@ -22,24 +22,23 @@ pre_install()
 
 
 setup(
-    name='puzzle15ai',
+    name='pynterest',
     version='0.1.14',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    packages=["puzzle15ai"],
+    packages=["pynterest"],
     setup_requires=[
         'pyside6',
         'numpy'
     ],
-    url='https://github.com/SajjadAemmi/Puzzle15AI',
+    url='https://github.com/SajjadAemmi/Pinterest-Crawler',
     license='',
     author='Sajjad Aemmi',
     author_email='sajjadaemmi@gmail.com',
-    description='Puzzle15 AI solver with A* search algorithm',
+    description='Pinterest Crawler: Download as many images as you want about the searched words',
     include_package_data=True,
-    package_data={"puzzle15ai": ['main.ui']},
     install_requires=post_install(),
     entry_points={
-        "console_scripts": ["puzzle15ai=puzzle15ai.main_window:main"],
+        "console_scripts": ["pynterest=pynterest.plantsai:main"],
     },
 )
