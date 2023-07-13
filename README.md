@@ -1,25 +1,42 @@
-# Pinterest Image Download by Keywords
+# Pinterest Crawler
 
-You can download as many images as you want about the searched words. You can also download images in a loop and use it to create a dataset for machine learning projects.
+[![Upload Python Package](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-publish.yml/badge.svg)](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-publish.yml)
+[![Python package](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-package.yml/badge.svg)](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-package.yml)
+[![Python application](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-app.yml/badge.svg)](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-app.yml)
 
-## Installation
+<img src="Pinterest-Logo.png" width="400px">
 
-Run following command for install requirements:
+Downloads HD images from pinterest by your favorite keywords. A useful tool to create a dataset for machine learning projects.
 
+## Install
+
+Install the package with pip in a Python>=3.8 environment:
 ```
-pip install -r requirements.txt
-```
-
-## Run
-
-Set your favorite keywords in `keywords.txt` and run following command for collect some images:
-
-```
-python main.py
+pip install pinterest-crawler
 ```
 
-Due to some limitations of Pinterest, you can download 100 images per keyword. If you want to download more images, you can run following command for infinite execution:
+## Usage
+
+### CLI
+
+Pinterest Crawler may be used directly in the Command Line Interface (CLI):
+
+```bash
+pinterest-crawler --keywords lion tiger bear
+```
+
+Also you can write your favorite keywords in a file for example `my_keywords.txt` and set path of file in `--keywords` argument:
+```bash
+pinterest-crawler --keywords my_keywords.txt
+```
+
+<!-- Due to some limitations of Pinterest, you can download 100 images per keyword. If you want to download more images, you can run following command for infinite execution:
 
 ```
 python loop.py
-```
+``` -->
+
+## TODO
+- [ ] loop
+- [ ] download images in a specific size
+- [ ] download images in a specific format
