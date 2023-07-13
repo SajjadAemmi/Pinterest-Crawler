@@ -2,7 +2,8 @@ import os
 import random
 import argparse
 from itertools import combinations
-from src import PinterestScraper, PinterestConfig
+from .scraper import Scraper
+from .config import Config
 
 
 def main():
@@ -34,7 +35,7 @@ def main():
         print(keyword)
 
         while True:
-            configs = PinterestConfig(search_keywords=keyword,  # Search word
+            configs = Config(search_keywords=keyword,  # Search word
                                       # total number of images to download (default = "100")
                                       file_lengths=5000,
                                       # image quality (default = "orig")
@@ -44,7 +45,7 @@ def main():
                                       scroll=10000)
 
             # download images directly
-            number = PinterestScraper(configs).download_images(args.output)  
+            number = Scraper(configs).download_images(args.output)  
             print("number:", number)
             if number == 0:
                 counter += 1
