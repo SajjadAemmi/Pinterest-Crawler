@@ -3,6 +3,7 @@
 [![Upload Python Package](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-publish.yml/badge.svg)](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-publish.yml)
 [![Python package](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-package.yml/badge.svg)](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-package.yml)
 [![Python application](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-app.yml/badge.svg)](https://github.com/SajjadAemmi/Pinterest-Crawler/actions/workflows/python-app.yml)
+[![Downloads](https://static.pepy.tech/badge/pinterest-crawler)](https://pepy.tech/project/pinterest-crawler)
 
 <img src="https://raw.githubusercontent.com/SajjadAemmi/Pinterest-Crawler/main/Pinterest-Logo.png" width="400px">
 
