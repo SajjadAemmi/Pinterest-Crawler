@@ -1,5 +1,5 @@
 from pathlib import Path
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 def post_install():
@@ -23,7 +23,7 @@ pre_install()
 
 setup(
     name='pinterest-crawler',
-    version='0.1.3',
+    version='0.2.0',
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=["pinterest_crawler"],
@@ -36,6 +36,6 @@ setup(
     include_package_data=True,
     install_requires=post_install(),
     entry_points={
-        "console_scripts": ["pinterest-crawler=pinterest_crawler.pinterest_crawler:main"],
+        "console_scripts": ["pinterest-crawler=pinterest_crawler.main:main"],
     },
 )

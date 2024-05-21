@@ -18,10 +18,10 @@ class Scraper:
         results = self.get_urls()
         try:
             os.makedirs(output_path)
-            print("Directory ", output_path, " Created ")
+            print(f"Directory {output_path} Created")
         except FileExistsError:
             pass
-        
+
         number = 0
         listdir = os.listdir(output_path)
         if results != None:
@@ -30,8 +30,9 @@ class Scraper:
                 if file_name not in listdir:
                     try:
                         number += 1
-                        print("Download ::: ", i)
-                        urllib.request.urlretrieve(i, os.path.join(output_path, file_name))
+                        print("Downloading", i)
+                        urllib.request.urlretrieve(
+                            i, os.path.join(output_path, file_name))
                     except Exception as e:
                         print("Error:", e)
 
@@ -42,15 +43,17 @@ class Scraper:
         DATA = self.config.image_data,
         URL_CONSTANT = self.config.search_url
 
-        r = requests.get(URL_CONSTANT, params={"source_url": SOURCE_URL, "data": DATA})
+        r = requests.get(URL_CONSTANT, params={
+                         "source_url": SOURCE_URL, "data": DATA})
         jsonData = json.loads(r.content)
         resource_response = jsonData["resource_response"]
         data = resource_response["data"]
         results = data["results"]
-        
+
         for i in results:
             try:
-                self.image_urls.append(i["objects"][0]["cover_images"][0]["originals"]["url"])
+                self.image_urls.append(
+                    i["objects"][0]["cover_images"][0]["originals"]["url"])
             except:
                 self.URL = None
                 self.search(i)
@@ -59,10 +62,10 @@ class Scraper:
 
         if len(self.image_urls) < int(self.config.file_length):
             try:
-                print("Creating links", len(self.image_urls))
+                print(f"{len(self.image_urls)} images Founded")
                 return self.image_urls[0:self.config.file_length]
-            except:
-                pass
+            except Exception as e:
+                print("Error:", e)
 
     def search(self, d):
         if isinstance(d, dict):

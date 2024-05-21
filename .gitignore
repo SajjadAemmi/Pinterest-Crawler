@@ -3,3 +3,5 @@ photos*
 *.zip
 .vscode
 .idea
+pinterest_crawler.egg-info
+build
