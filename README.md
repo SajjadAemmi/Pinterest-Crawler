@@ -9,6 +9,10 @@
 
 Downloads HD images from pinterest by your favorite keywords. A useful tool to create a dataset for machine learning projects.
 
+You may want to
+
+<a href="https://www.buymeacoffee.com/SajjadAemmi" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ## Install
 
 Install the package with pip in a Python>=3.8 environment:
