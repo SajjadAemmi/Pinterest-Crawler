@@ -43,8 +43,11 @@ class Scraper:
         DATA = self.config.image_data,
         URL_CONSTANT = self.config.search_url
 
+        headers = {
+            "x-pinterest-pws-handler": "www/search/[scope].js"
+        }
         r = requests.get(URL_CONSTANT, params={
-                         "source_url": SOURCE_URL, "data": DATA})
+                         "source_url": SOURCE_URL, "data": DATA}, headers=headers)
         jsonData = json.loads(r.content)
         resource_response = jsonData["resource_response"]
         data = resource_response["data"]
